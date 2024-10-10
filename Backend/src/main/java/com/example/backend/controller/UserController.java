@@ -70,17 +70,19 @@ public class UserController {
             return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
         }
     }
-    @PutMapping("/{id}/role")
-    public ResponseEntity<User> changeUserRole(@PathVariable Long id, @Valid @RequestBody RoleDto roleDto)
-            throws Exception, ResourceNotFoundException {
-        Role userRole;
-        try {
-            userRole = Role.valueOf(roleDto.getRole());
-        } catch (IllegalArgumentException e) {
-            throw new Exception("Invalid role: " + roleDto.getRole());
-        }
-        User user = userService.changeUserRole(id, userRole);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
+
+
+//    @PutMapping("/{id}/role")
+//    public ResponseEntity<User> changeUserRole(@PathVariable Long id, @Valid @RequestBody RoleDto roleDto)
+//            throws Exception, ResourceNotFoundException {
+//        Role userRole;
+//        try {
+//            userRole = Role.valueOf(roleDto.getRole());
+//        } catch (IllegalArgumentException e) {
+//            throw new Exception("Invalid role: " + roleDto.getRole());
+//        }
+//        User user = userService.changeUserRole(id, userRole);
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
 
 }
