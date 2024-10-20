@@ -1,0 +1,25 @@
+<!-- login.component.html -->
+<div class="container">
+  <h2 class="title">Вхід</h2>
+  <form *ngIf="!isLoggedIn" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username <span class="required-star">*</span></label>
+      <input type="text" id="username" formControlName="username" placeholder="Username" />
+      <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)" class="text-danger">
+        Поле "Username" є обов'язковим.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Пароль <span class="required-star">*</span></label>
+      <input type="password" id="password" formControlName="password" placeholder="Password" />
+      <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="text-danger">
+        Поле "Пароль" є обов'язковим.
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="text-danger">
+      {{ errorMessage }}
+    </div>
+    <button type="submit">Увійти</button>
+  </form>
+  <p class="register-link">Немає облікового запису? <a routerLink="/register">Зареєструватися</a></p>
+</div>
