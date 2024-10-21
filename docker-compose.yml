@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+
+  mysql:
+    image: mysql:8.0.39-debian
+    container_name: ${CONTAINER_NAME-mysql}-container
+    restart: always
+    ports:
+      - "127.0.0.1:${MYSQL_PORT-3306}:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - mysql-volume:/var/lib/mysql
+
+  backend:
+    build: .
+    container_name: ${CONTAINER_NAME-renaissance}-container
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "127.0.0.1:8080:8080"
+
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=${MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - FILE_UPLOAD_DIR=${FILE_UPLOAD_DIR}
+      - SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE=10MB
+      - SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE=10MB
+
+ 
+
+volumes:
+  mysql-volume: {}
+
+networks:
+  default:
+    name: renaissance_network

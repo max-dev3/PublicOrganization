@@ -14,7 +14,7 @@
     <name>Backend</name>
     <description>Backend</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -118,6 +118,26 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>ng</executable>
+                    <workingDirectory>../Frontend/frontend</workingDirectory>
+                    <arguments>
+                        <argument>build</argument>
+                        <!-- <argument>output-path ../../Backend/src/main/resources/static/</argument> -->
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
