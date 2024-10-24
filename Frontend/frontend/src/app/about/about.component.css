@@ -1,0 +1,210 @@
+.about-us {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: -3rem;
+
+}
+h1{
+  margin-top: 100px;
+
+}
+.about-image {
+  margin-left: -4rem;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.2);
+}
+
+.about-text {
+  max-width: 50%;
+  font-size: 20px;
+}
+.about-text span {
+  color: #5586e5;
+  font-size: 22px;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: -4rem;
+}
+
+@media (max-width: 800px) {
+  h1{
+    margin-top: 100px;
+
+  }
+  .about-image {
+    margin-top: 20px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-text {
+    max-width: 80%;
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-us {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .about-image {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .about-text {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 1rem;
+    font-size: 18px;
+  }
+
+  .about-text span {
+    font-size: 20px;
+  }
+
+  .about-title {
+    font-size: 2rem;
+    margin-bottom: -2rem;
+  }
+}
+
+
+.about img {
+  width: 80%;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+.about-accomplishments-plans {
+  text-align: center;
+  background-color: #f7fafc;
+  width: 100%;
+  margin: 0;
+  padding: 2rem 0;
+}
+.accomplishments,
+.plans {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  margin: 0 2.5%;
+}
+
+.about-accomplishments-plans h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-accomplishments-plans h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background-color: #f7fafc;
+
+}
+
+.about-accomplishments-plans ul {
+  text-align: left;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 100px;
+  margin-top: 10px;
+
+}
+
+.about-accomplishments-plans li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .accomplishments,
+  .plans {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .about-accomplishments-plans ul {
+    margin-left: 20px;
+  }
+}
+
+
+.header-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #d0d0d0;
+
+}
+
+
+.about-team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.about-team h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: calc(25% - 2rem);
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.team-member h3 {
+  font-size: 1.5rem;
+  margin-bottom: -0.2rem;
+}
+
+.team-member p {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 800px) {
+  .team-member {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 500px) {
+  .team-member {
+    width: 100%;
+  }
+}

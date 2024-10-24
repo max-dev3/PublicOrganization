@@ -1,0 +1,253 @@
+header {
+  background-color: #fff;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.offer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 100px;
+}
+
+.offer h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.offer h1 span{
+  font-weight: bold;
+  font-size: 40px;
+  color: #6193ff;
+}
+
+.offer img {
+  width: 50%; /* Ви можете змінити розмір зображення, змінивши значення ширини */
+  max-width: 450px; /* Максимальна ширина зображення */
+  height: auto;
+  margin-top: 50px;
+  object-fit: cover;
+}
+.directions {
+  background-color: #f7fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 100% ;
+  height: 350px;
+}
+.header-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #d0d0d0;
+}
+.directions p {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.directions ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.directions li img {
+  width: 60%;
+  height: 100px;
+  margin-bottom: 1rem;
+  align-self: center;
+}
+
+.directions span {
+  display: block;
+  font-size: 1.2rem;
+  text-align: center;
+
+}
+
+.directions li {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: black;
+  width: 250px; /* Змініть розмір квадратів за потреби */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  margin: 0 2rem;
+  flex-direction: column;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.directions li:hover {
+  cursor: pointer;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+.statistics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.statistics h2 {
+  color: #5586e5;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.we{
+  color: #f6f633;
+}
+.statistics ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.statistics li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 1rem;
+  text-align: center;
+}
+
+.statistics h3 {
+  font-size: 1rem;
+  margin-bottom: -1.5rem;
+}
+
+.statistics p  {
+  font-size: 1.2rem;
+  margin-bottom: 1px;
+}
+
+.statistics .text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0e3994;
+}
+
+@media (max-width: 700px) {
+  .statistics ul {
+    flex-direction: column;
+  }
+}
+
+.partners {
+  background-color: #f7fafc;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.partners h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2rem
+}
+
+.partners ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.partners li {
+  padding: 1rem;
+  margin: 0 1rem;
+  text-align: center;
+}
+
+.partners .partner-logo {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.partners .partner-logo:hover {
+  filter: grayscale(0%);
+  cursor: pointer;
+}
+.faqs{
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  .offer {
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .offer h1 {
+    margin-top: 50px;
+    font-size: 1.5rem;
+  }
+  .offer h1 span {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .offer img {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 1rem;
+  }
+
+  .directions {
+    height: auto;
+  }
+
+  .directions ul {
+    flex-direction: column;
+  }
+
+  .directions li {
+    width: 85%;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  .statistics ul {
+    flex-direction: column;
+  }
+
+  .statistics li {
+    margin: 1rem 0;
+  }
+
+  .partners ul {
+    flex-direction: column;
+  }
+
+  .partners li {
+    margin: 1rem 0;
+  }
+
+  .partners .partner-logo {
+    width: 150px;
+    height: 75px;
+  }
+}
