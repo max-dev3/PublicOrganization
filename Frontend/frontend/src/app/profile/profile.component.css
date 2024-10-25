@@ -1,0 +1,262 @@
+.profile-container {
+  width: 80%;
+  margin: auto;
+  padding: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 50px;
+
+}
+
+.profile-info {
+
+  margin-top: 20px;
+  flex: 1;
+}
+
+.profile-info p {
+  font-size: 0.5em;
+}
+.custom-dialog-container {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin: 60px auto;
+  background-color: #f7fafc;
+  transform: translate(-50%, -50%);
+}
+.delete-btn {
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #d2727c;
+  color: white;
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+.profile-info {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.profile-info p {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+.projects-container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding-top: 5px;
+  margin-top: 20px;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: start;
+}
+
+.projects-button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.5s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.projects-button.active {
+  border-bottom: 2px solid #007bff; /* Add a blue underline for the active button */
+}
+
+.create-project-btn {
+  align-self: flex-end;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.create-project-btn:hover {
+  background-color: #0056b3;
+}
+.projects-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 250px));
+  grid-gap: 20px;
+  width: 100%;
+}
+
+.post-card {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .3s ease-in-out;
+  cursor: pointer;
+}
+
+
+.post-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.post-title {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.post-content {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.post-author {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #4d4d4f;
+}
+
+.post-date {
+  font-size: 14px;
+  color: gray;
+}
+.likes {
+  display: flex;
+  align-items: center;
+}
+
+.likes-count {
+  margin-right: 10px;
+}
+
+.fa-heart {
+  color: gray;
+}
+
+.fa-heart.liked {
+  color: red;
+}
+.favorite-icon {
+  cursor: pointer;
+  font-size: 2rem;
+  color: #000;
+}
+
+.favorite-icon:hover {
+  opacity: 0.5;
+}
+.favorite-icon.is-favorite {
+  color: red;
+}
+
+.post-status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+  z-index: 1;
+}
+
+.post-status.pending {
+  color: #ffb721;
+  border: 1px solid #ffdc2c;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.post-status.rejected {
+  color: red;
+  border: 1px solid red;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.post-status.approved {
+  color: green;
+  border: 1px solid green;
+  background-color: white;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    padding-top: 80px;
+  }
+
+  .profile-info {
+    width: 90%;
+  }
+
+  .projects-header {
+
+    min-width: 310px;
+    flex-direction: column;
+  }
+
+  .projects-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .projects-content {
+    padding: 10px;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-card {
+    padding: 10px;
+  }
+}
+.delete-icon {
+  cursor: pointer;
+  font-size: 2rem;
+  color: red;
+}
+
+.delete-icon:hover {
+  opacity: 0.5;
+}

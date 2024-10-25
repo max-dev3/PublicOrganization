@@ -1,0 +1,71 @@
+<div class="profile-container">
+
+
+  <div class="profile-info">
+    <h1>Профіль користувача</h1>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Ім'я:</strong> {{ user.firstName }}</p>
+    <p><strong>Прізвище:</strong> {{ user.lastName }}</p>
+    <p><strong>Номер телефону:</strong> {{ user.phoneNumber }}</p>
+
+  <button class="delete-btn" (click)="showDialog()">Видалити профіль</button>
+  <app-delete-dialog *ngIf="isDialogVisible" (confirm)="deleteAccount()" (cancel)="hideDialog()"></app-delete-dialog>
+  </div>
+  <div class="projects-wrapper">
+    <div class="projects-container">
+      <div class="projects-header">
+        <button class="projects-button" [ngClass]="{'active': showingOwnProjects}" (click)="showOwnProjects()">Власні проекти</button>
+        <button class="projects-button" [ngClass]="{'active': !showingOwnProjects}" (click)="showLikedProjects()">Вподобані проекти</button>
+      </div>
+    </div>
+
+    <div *ngIf="showingOwnProjects" class="projects-content">
+        <button routerLink="/create-project" class="create-project-btn">Створити власний проект</button>
+      <div class="posts-grid">
+        <div *ngFor="let post of userPosts" class="post-card" [routerLink]="['/view-project', post.id]">
+          <div *ngIf="canSeeStatus() && post.status" class="post-status" [ngClass]="{
+            'pending': post.status === 'PENDING_APPROVAL',
+            'rejected': post.status === 'REJECTED',
+            'approved': post.status === 'APPROVED'
+          }">
+          {{ post.status | statusTranslate }}
+        </div>
+          <img [src]="post.image" alt="Post image" class="post-image"/>
+        <h3 class="post-title">{{post.title}}</h3>
+        <p class="post-content" [innerHTML]="(post.content | slice:0:50) + '...'"></p>
+        <div>
+          <p class="post-author">{{post.user.firstName}} {{post.user.lastName}}</p>
+          <p class="post-date">{{ post.createdAt | ukDate }}</p>
+        </div>
+        <div class="likes">
+        <span class="delete-icon" (click)="deletePost(post.id); $event.stopPropagation()">
+          <mat-icon>delete</mat-icon>
+        </span>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="!showingOwnProjects" class="projects-content">
+      <div class="posts-grid">
+        <div *ngFor="let post of likedPosts" class="post-card" [routerLink]="['/view-project', post.id]">
+          <img [src]="post.image" alt="Post image" class="post-image"/>
+          <h3 class="post-title">{{post.title}}</h3>
+          <p class="post-content" [innerHTML]="(post.content | slice:0:50) + '...'"></p>
+          <div>
+            <p class="post-author">{{post.user.firstName}} {{post.user.lastName}}</p>
+            <p class="post-date">{{ post.createdAt | ukDate }}</p>
+          </div>
+          <div class="likes">
+            <span class="likes-count">{{post.likes.length}}</span>
+            <div class="favorite-icon" [ngClass]="{ 'is-favorite': isLiked(post) }">
+              <mat-icon (click)="toggleLike(post.id, currentUserId); $event.stopPropagation()">
+                {{ isLiked(post) ? 'favorite' : 'favorite_border' }}
+              </mat-icon>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
