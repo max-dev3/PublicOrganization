@@ -26,9 +26,9 @@ import { UkDatePipe } from './uk-date.pipe';
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import { ViewPostComponent } from './view-post/view-post.component';
 import { StatusTranslatePipe } from './status-translate.pipe';
-import { UserListComponent } from './user-list/user-list.component';
+
 import {MatTableModule} from "@angular/material/table";
-import { FaqComponent } from './faq/faq.component';
+
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatInputModule} from "@angular/material/input";
 

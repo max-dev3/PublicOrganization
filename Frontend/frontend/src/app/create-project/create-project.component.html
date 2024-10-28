@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Створити новий пост</h1>
+  <form [formGroup]="createPostForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label for="title">Назва<span class="required-star">*</span></label>
+      <input type="text" class="form-control" id="title" formControlName="title" placeholder="Введіть назву">
+      <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+        <div *ngIf="f['title'].errors['required']">Назва обов'язкова</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Вміст<span class="required-star">*</span></label>
+      <ckeditor [editor]="Editor" formControlName="content"></ckeditor>
+      <div *ngIf="submitted && f['content'].errors" class="invalid-feedback">
+        <div *ngIf="f['content'].errors['required']" >Вміст обов'язковий</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image">Зображення<span class="required-star">*</span></label>
+      <div class="custom-file-upload">
+        <input type="file" id="image" class="file-input" (change)="onFileChange($event)">
+        <label for="image" class="file-label" [style.backgroundImage]="'url(' + imagePreview + ')'">
+          <div class="plus" *ngIf="!imagePreview">+</div>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="createPostForm.invalid" class="btn btn-primary">Створити пост</button>
+
+  </form>
+
+  <!--  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">-->
+  <!--    {{errorMessage}}-->
+  <!--  </div>-->
+</div>

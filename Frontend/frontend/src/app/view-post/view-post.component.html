@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">{{post?.title}}</h1>
+  <div class="row">
+    <div class="col">
+      <p class="text-left">Автор: {{post?.user?.firstName}} {{post?.user?.lastName}}</p>
+    </div>
+    <div class="col">
+      <p class="text-right">Створено: {{post?.createdAt | ukDate}}</p>
+    </div>
+  </div>
+  <img *ngIf="imageStr" [src]="imageStr" alt="Post image">
+  <div class="post-content" [innerHTML]="post?.content"></div>
+
+</div>
+

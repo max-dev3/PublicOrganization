@@ -1,0 +1,46 @@
+<div class="search-sort-container">
+  <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Пошук">
+  <button mat-icon-button (click)="toggleSortOrder()" aria-label="Змінити порядок сортування">
+    <mat-icon>{{ sortAscending ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+  </button>
+</div>
+<div class="status-filter" *ngIf="canSeeStatus()">
+  <button mat-raised-button color="primary" (click)="filterByStatus(null)">Усі</button>
+  <button mat-raised-button color="primary" (click)="filterByStatus('APPROVED')">Прийняті</button>
+  <button mat-raised-button color="primary" (click)="filterByStatus('REJECTED')">Відхилені</button>
+  <button mat-raised-button color="primary" (click)="filterByStatus('PENDING_APPROVAL')">Очікує підтвердження</button>
+</div>
+
+<div class="posts-grid">
+
+  <div *ngFor="let post of posts" class="post-card" [routerLink]="['/view-project', post.id]">
+    <div *ngIf="canSeeStatus() && post.status" class="post-status" [ngClass]="{
+      'pending': post.status === 'PENDING_APPROVAL',
+      'rejected': post.status === 'REJECTED',
+      'approved': post.status === 'APPROVED'
+    }">
+      {{ post.status | statusTranslate }}
+    </div>
+
+    <img *ngIf="post.id" [src]="'http://localhost:8080/api/v1/posts/' + post.id + '/image'" alt="Post image" class="post-image"/>
+    <h3 class="post-title">{{post.title}}</h3>
+    <p class="post-content" [innerHTML]="(post.content | slice:0:50) + '...'"></p>
+    <div>
+      <p class="post-author">{{post.user.firstName}} {{post.user.lastName}}</p>
+      <p class="post-date">{{ post.createdAt | ukDate }}</p>
+    </div>
+    <div *ngIf="isAuthorized()" class="likes">
+      <span class="likes-count">{{post.likes.length}}</span>
+      <div *ngIf="canSeeStatus()" class="approve-reject-icons">
+        <mat-icon (click)="approvePost(post.id); $event.stopPropagation()" >check_circle</mat-icon>
+        <mat-icon (click)="rejectPost(post.id); $event.stopPropagation()" >cancel</mat-icon>
+      </div>
+      <div class="favorite-icon" [ngClass]="{ 'is-favorite': isLiked(post) }">
+        <mat-icon (click)="toggleLike(post.id, currentUserId); $event.stopPropagation()" >
+          {{ isLiked(post) ? 'favorite' : 'favorite_border' }}
+        </mat-icon>
+      </div>
+    </div>
+
+  </div>
+</div>

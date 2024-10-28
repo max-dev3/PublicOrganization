@@ -9,8 +9,6 @@ import {RegisterComponent} from "./register/register.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {CreateProjectComponent} from "./create-project/create-project.component";
 import {ViewPostComponent} from "./view-post/view-post.component";
-import {UserListComponent} from "./user-list/user-list.component";
-import {AuthGuard} from "./services/authguard.service";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
