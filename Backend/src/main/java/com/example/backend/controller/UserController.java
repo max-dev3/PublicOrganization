@@ -35,7 +35,6 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) throws ResourceNotFoundException {
         User user = userService.getUserById(id)

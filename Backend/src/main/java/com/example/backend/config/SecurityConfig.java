@@ -56,19 +56,16 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
-//                        .requestMatchers("/api/v1/faqs/**").hasRole("USER")
-//                        .requestMatchers("/api/v1/posts/**").permitAll()
+
+//                          .requestMatchers("/api/v1/auth/**").permitAll() // Дозвольте всім користувачам доступ до аутентифікації та реєстрації.
 //                        .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated())
-                        .httpBasic(Customizer.withDefaults());
-//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .authenticationProvider(authenticationProvider)
-//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 
         ;
         return http.build();
     }
-
 }
