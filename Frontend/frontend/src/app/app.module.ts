@@ -49,8 +49,8 @@ import {MatInputModule} from "@angular/material/input";
     UkDatePipe,
     ViewPostComponent,
     StatusTranslatePipe,
-    UserListComponent,
-    FaqComponent
+    // UserListComponent,
+    // FaqComponent
   ],
   imports: [
     BrowserModule,

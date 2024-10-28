@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         (response) => {
-          console.log('Login successful', response);
           this.router.navigate(['/']); // перенаправлення на головну сторінку
           this.authService.setLoggedInStatus(true);
         },

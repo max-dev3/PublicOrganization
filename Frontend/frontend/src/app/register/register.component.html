@@ -8,77 +8,75 @@
     <!-- Username Field -->
     <div class="form-group">
       <label for="username">Ім'я користувача<span class="required-star">*</span></label>
-      <input type="text" id="username" formControlName="username" class="form-control"
-             [ngClass]="{ 'is-invalid': f['username'].errors && (f['username'].touched || submitted) }" />
+      <input type="text" id="username" formControlName="username" class="form-control" autocomplete="username"
+             [ngClass]="{ 'is-invalid': f['username'].errors && (f['username'].touched || submitted) }"/>
       <div *ngIf="f['username'].errors && (f['username'].touched || submitted)" class="invalid-feedback">
-        <div *ngIf="f['username'].errors['required']">Ім'я користувача обов'язкове</div>
-        <div *ngIf="f['username'].errors['minlength']">Ім'я користувача повинно містити щонайменше 6 символів</div>
-        <div *ngIf="f['username'].errors['alreadyExists']">Користувач з таким іменем вже існує</div>
+        <div *ngIf="f['username'].errors?.['required']">Ім'я користувача обов'язкове</div>
+        <div *ngIf="f['username'].errors?.['minlength']">Ім'я користувача повинно містити щонайменше 6 символів</div>
+        <div *ngIf="f['username'].errors?.['alreadyExists']">Користувач з таким іменем вже існує</div>
       </div>
-    </div>
 
-    <!-- Email Field -->
-    <div class="form-group">
       <label for="email">Email<span class="required-star">*</span></label>
-      <input type="email" id="email" formControlName="email" class="form-control"
-             [ngClass]="{ 'is-invalid': f['email'].errors && (f['email'].touched || submitted) }" />
+      <input type="email" id="email" formControlName="email" class="form-control" autocomplete="email"
+             [ngClass]="{ 'is-invalid': f['email'].errors && (f['email'].touched || submitted) }"/>
       <div *ngIf="f['email'].errors && (f['email'].touched || submitted)" class="invalid-feedback">
-        <div *ngIf="f['email'].errors['required']">Email обов'язковий</div>
-        <div *ngIf="f['email'].errors['email']">Невірний формат email</div>
-        <div *ngIf="f['email'].errors['alreadyExists']">Email вже існує</div>
+        <div *ngIf="f['email'].errors?.['required']">Email обов'язковий</div>
+        <div *ngIf="f['email'].errors?.['email']">Невірний формат email</div>
+        <div *ngIf="f['email'].errors?.['alreadyExists']">Email вже існує</div>
       </div>
     </div>
 
-    <!-- First Name Field -->
+
     <div class="form-group">
       <label for="firstName">Ім'я<span class="required-star">*</span></label>
-      <input type="text" id="firstName" formControlName="firstName" class="form-control"
+      <input type="text" id="firstName" formControlName="firstName" class="form-control" autocomplete="given-name"
              [ngClass]="{ 'is-invalid': f['firstName'].errors && (f['firstName'].touched || submitted) }" />
       <div *ngIf="f['firstName'].errors && (f['firstName'].touched || submitted)" class="invalid-feedback">
-        <div *ngIf="f['firstName'].errors['required']">Ім'я обов'язкове</div>
+        <div *ngIf="f['firstName'].errors?.['required']">Ім'я обов'язкове</div>
       </div>
     </div>
 
     <!-- Last Name Field -->
     <div class="form-group">
       <label for="lastName">Прізвище<span class="required-star">*</span></label>
-      <input type="text" id="lastName" formControlName="lastName" class="form-control"
+      <input type="text" id="lastName" formControlName="lastName" class="form-control" autocomplete="family-name"
              [ngClass]="{ 'is-invalid': f['lastName'].errors && (f['lastName'].touched || submitted) }" />
       <div *ngIf="f['lastName'].errors && (f['lastName'].touched || submitted)" class="invalid-feedback">
-        <div *ngIf="f['lastName'].errors['required']">Прізвище обов'язкове</div>
+        <div *ngIf="f['lastName'].errors?.['required']">Прізвище обов'язкове</div>
       </div>
     </div>
+
     <!-- Phone Number Field -->
     <div class="form-group">
       <label for="phoneNumber">Номер телефону<span class="required-star">*</span></label>
-      <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control"
+      <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control" autocomplete="tel"
              [ngClass]="{ 'is-invalid': f['phoneNumber'].errors && (f['phoneNumber'].touched || submitted) }" />
       <div *ngIf="f['phoneNumber'].errors && (f['phoneNumber'].touched || submitted)" class="invalid-feedback">
-        <div *ngIf="f['phoneNumber'].errors['required']">Номер телефону обов'язковий</div>
-        <div *ngIf="f['phoneNumber'].errors['pattern']">Невірний формат номера телефону</div>
-        <div *ngIf="f['phoneNumber'].errors['alreadyExists']">Номер телефону вже існує</div>
+        <div *ngIf="f['phoneNumber'].errors?.['required']">Номер телефону обов'язковий</div>
+        <div *ngIf="f['phoneNumber'].errors?.['pattern']">Невірний формат номера телефону</div>
+        <div *ngIf="f['phoneNumber'].errors?.['alreadyExists']">Номер телефону вже існує</div>
       </div>
     </div>
 
     <!-- Password Field -->
     <div class="form-group">
       <label for="password">Пароль<span class="required-star">*</span></label>
-      <input type="password" id="password" formControlName="password" class="form-control"
+      <input type="password" id="password" formControlName="password" class="form-control" autocomplete="new-password"
              [ngClass]="{ 'is-invalid': f['password'].errors && (f['password'].touched || submitted) }" />
       <div *ngIf="f['password'].errors && (f['password'].touched || submitted)" class="invalid-feedback">
-        <div *ngIf="f['password'].errors['required']">Пароль обов'язковий</div>
-        <div *ngIf="f['password'].errors['pattern']">Пароль повинен містити щонайменше 6 символів, включаючи літери та цифри</div>
+        <div *ngIf="f['password'].errors?.['required']">Пароль обов'язковий</div>
+        <div *ngIf="f['password'].errors?.['pattern']">Пароль повинен містити щонайменше 6 символів, включаючи літери та цифри</div>
       </div>
     </div>
 
     <!-- Confirm Password Field -->
     <div class="form-group">
       <label for="confirmPassword">Підтвердіть пароль<span class="required-star">*</span></label>
-      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control"
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" autocomplete="new-password"
              [ngClass]="{ 'is-invalid': f['confirmPassword'].errors && (f['confirmPassword'].touched || submitted) }" />
       <div *ngIf="f['confirmPassword'].errors && (f['confirmPassword'].touched || submitted)" class="invalid-feedback">
-        <div *ngIf="f['confirmPassword'].errors['required']">Підтвердження пароля обов'язкове</div>
-        <div *ngIf="f['confirmPassword'].errors['mustMatch']">Паролі не збігаються</div>
+        <div *ngIf="f['confirmPassword'].errors?.['required']">Підтвердження пароля обов'язкове</div>
+        <div *ngIf="f['confirmPassword'].errors?.['mustMatch']">Паролі не збігаються</div>
       </div>
     </div>
 
@@ -93,5 +91,4 @@
     </div>
 
   </form>
-
 </div>

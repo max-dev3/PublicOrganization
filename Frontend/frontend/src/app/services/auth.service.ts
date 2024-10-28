@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, tap} from 'rxjs';
 
@@ -7,6 +7,8 @@ import {BehaviorSubject, Observable, tap} from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/api/v1/users';
+  private apiUrl1 = 'http://localhost:8080/api/v1/auth';
+
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
   constructor(private http: HttpClient) {}
 
@@ -15,20 +17,42 @@ export class AuthService {
   }
 
   register(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, user);
+    // Використовуємо наявний ендпоінт для створення користувача
+    return this.http.post<any>(`${this.apiUrl}`, user)
+      .pipe(
+        tap(userResponse => {
+          // Зберігаємо інформацію про користувача в localStorage
+          localStorage.setItem('user', JSON.stringify(userResponse));
+
+          // Після цього викликаємо метод для отримання токена
+          this.loadToken({ username: user.username, password: user.password });
+        })
+      );
   }
 
   login(credentials: any): Observable<any> {
+    // Спочатку отримуємо інформацію про користувача
     return this.http.post<any>(`${this.apiUrl}/login`, credentials)
       .pipe(
+        tap(user => {
+          // Зберігаємо дані користувача в localStorage
+          localStorage.setItem('user', JSON.stringify(user));
 
-        tap(response => {
-
-          localStorage.setItem('user', JSON.stringify(response));
-
-          this.setLoggedInStatus(true);
+          // Після цього викликаємо метод для отримання токена
+          this.loadToken(credentials);
         })
       );
+  }
+
+// Метод для отримання токена після успішного входу
+  private loadToken(credentials: any): void {
+    this.http.post<any>(`${this.apiUrl1}/authenticate`, credentials)
+      .subscribe(response => {
+        // Зберігаємо токен в localStorage
+        localStorage.setItem('token', response.token);
+        this.setLoggedInStatus(true);
+        console.log('Token:', response.token);
+      });
   }
 
   getUsers(): Observable<any[]> {
@@ -58,10 +82,14 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('loggedIn');
     localStorage.removeItem('user');
-    this.loggedIn.next(false);
+    localStorage.removeItem('token');
+    this.setLoggedInStatus(false);
   }
 
   changeUserRole(userId: number, role: string): Observable<any> {
     return this.http.put(`${this.apiUrl}/${userId}/role`, { role: role });
   }
 }
+
+
+

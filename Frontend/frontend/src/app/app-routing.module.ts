@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'create-project', component: CreateProjectComponent },
   { path: 'view-project/:id', component: ViewPostComponent },
-  { path: 'users-list', component: UserListComponent, canActivate: [AuthGuard], data: { roles: ['ADMIN'] }}
+  // { path: 'users-list', component: UserListComponent, canActivate: [AuthGuard], data: { roles: ['ADMIN'] }}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
