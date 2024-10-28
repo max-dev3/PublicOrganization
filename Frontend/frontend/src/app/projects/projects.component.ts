@@ -17,9 +17,8 @@ export class ProjectsComponent implements OnInit {
   sortAscending: boolean = true;
   constructor(private postService: PostService, private authService: AuthService) { }
   ngOnInit(): void {
-    this.postService.getAllPosts().subscribe(posts => {
-      this.posts = posts;
-    });
+    this.loadApprovedPosts();
+
   }
 
   isAuthorized(): boolean {
@@ -70,14 +69,17 @@ export class ProjectsComponent implements OnInit {
       });
     }
   }
+
   filterAndSortPosts(): void {
     this.filterPosts();
     this.sortPosts();
   }
+
   filterByStatus(status: 'APPROVED' | 'REJECTED' | 'PENDING_APPROVAL' | null): void {
     this.currentStatus = status;
     this.loadPosts();
   }
+
   onSearch(): void {
     this.filterAndSortPosts();
   }
@@ -105,6 +107,7 @@ export class ProjectsComponent implements OnInit {
       }
     });
   }
+
   sortPosts(): void {
     this.posts.sort((a, b) => {
       const valueA = a.title.toLowerCase();

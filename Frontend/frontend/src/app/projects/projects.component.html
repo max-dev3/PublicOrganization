@@ -4,6 +4,7 @@
     <mat-icon>{{ sortAscending ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
   </button>
 </div>
+
 <div class="status-filter" *ngIf="canSeeStatus()">
   <button mat-raised-button color="primary" (click)="filterByStatus(null)">Усі</button>
   <button mat-raised-button color="primary" (click)="filterByStatus('APPROVED')">Прийняті</button>
