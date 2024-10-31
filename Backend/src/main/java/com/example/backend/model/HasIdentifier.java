@@ -1,5 +1,5 @@
 package com.example.backend.model;
 
-public interface Identifiable {
+public interface HasIdentifier {
   Long getId();
 }

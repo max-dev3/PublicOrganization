@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Post implements Identifiable {
+public class Post implements HasIdentifier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

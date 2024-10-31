@@ -13,7 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User implements Identifiable {
+public class User implements HasIdentifier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.example.backend.model.FAQ;
-import com.example.backend.model.Identifiable;
+import com.example.backend.model.HasIdentifier;
 import com.example.backend.model.Like;
 import com.example.backend.model.Post;
 import com.example.backend.model.Role;
@@ -72,7 +72,7 @@ public abstract class EntityBuilder {
     }
 
     // TODO: move this to a utility class
-    protected <T extends Identifiable> void assertListEquals(List<T> expected, List<T> actual) {
+    protected <T extends HasIdentifier> void assertListEquals(List<T> expected, List<T> actual) {
         assertEquals(expected.size(), actual.size());
         for (int i = 0; i < expected.size(); i++) {
             assertEquals( expected.get(i).getId(), actual.get(i).getId() );

@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FAQ implements Identifiable {
+public class FAQ implements HasIdentifier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Like implements Identifiable {
+public class Like implements HasIdentifier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
