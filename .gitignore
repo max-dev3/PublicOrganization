@@ -1,0 +1,11 @@
+.vscode
+
+Backend/.idea
+Backend/.vscode
+Backend/.mvn
+Backend/target
+
+
+Frontend/frontend/.idea
+Frontend/frontend/.vscode
+Frontend/frontend/node_modules
