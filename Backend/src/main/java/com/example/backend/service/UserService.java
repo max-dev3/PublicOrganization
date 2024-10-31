@@ -58,6 +58,8 @@ public class UserService {
             throw new InvalidInputException("User with id " + id + " not found.");
         }
 
+        validateUser(updatedUser);
+
         User userToUpdate = userRepository.findById(id).get();
 
         if (!userToUpdate.getEmail().equals(updatedUser.getEmail())) {
@@ -81,14 +83,11 @@ public class UserService {
             if (existingUser.isPresent()) {
                 throw new InvalidInputException("Phone number " + updatedUser.getPhoneNumber() + " already exists");
             }
-            if (!isValidPhoneNumber(updatedUser.getPhoneNumber())) {
-                throw new InvalidInputException("Invalid phone number format: " + updatedUser.getPhoneNumber());
-            }
             userToUpdate.setPhoneNumber(updatedUser.getPhoneNumber());
         }
 
         userToUpdate.setUsername(updatedUser.getUsername());
-        userToUpdate.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
+        userToUpdate.setPassword(passwordEncoder.encode(updatedUser.getPassword()));// is password reencoded on every update?
         userToUpdate.setEmail(updatedUser.getEmail());
         userToUpdate.setFirstName(updatedUser.getFirstName());
         userToUpdate.setLastName(updatedUser.getLastName());

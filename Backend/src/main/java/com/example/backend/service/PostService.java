@@ -113,7 +113,7 @@ public class PostService {
     public String uploadFile(MultipartFile file) {
         try {
             // Define the path to the directory where you want to save the image
-            String uploadDir = "D:/Навчання/3_course/PublicOrg/uploads/images/";
+            String uploadDir = "D:/Навчання/3_course/PublicOrg/uploads/images/";//TODO: replacae with uploadDir
 
             // Create a new file in the specified directory with the original file name
             File upload = new File(uploadDir + file.getOriginalFilename());
