@@ -11,6 +11,7 @@ import com.example.backend.model.HasIdentifier;
 import com.example.backend.model.Like;
 import com.example.backend.model.Post;
 import com.example.backend.model.Role;
+import com.example.backend.model.Status;
 import com.example.backend.model.User;
 
 public abstract class EntityBuilder {
@@ -18,13 +19,22 @@ public abstract class EntityBuilder {
     private static final Random random = new Random();
 
     protected FAQ getFaqEntity() {
+        return getFaqEntity(null);
+    }
+
+    protected FAQ getFaqEntity(User user) {
+        Long randomValue = EntityBuilder.random.nextLong(Long.MAX_VALUE);
+        return getFaqEntity(user, randomValue);
+    }
+
+    protected FAQ getFaqEntity(User user, Long id) {
         Long randomValue = EntityBuilder.random.nextLong(Long.MAX_VALUE);
         FAQ faq = new FAQ();
 
-        faq.setId(randomValue);
+        faq.setId(id);
         faq.setQuestion("Question" + randomValue);
         faq.setAnswer("Answer" + randomValue);
-        faq.setUser(null);
+        faq.setUser(user);
         faq.setCreatedAt(new Date());
         faq.setUpdatedAt(new Date());
         return faq;
@@ -49,25 +59,39 @@ public abstract class EntityBuilder {
     }
 
     protected Post getPostEntity() {
+        return getPostEntity(null);
+    }
+
+    protected Post getPostEntity(User user) {
+        Long randomValue = EntityBuilder.random.nextLong(Long.MAX_VALUE);
+        return getPostEntity(user, randomValue);
+    }
+
+    protected Post getPostEntity(User user, Long id) {
         Long randomValue = EntityBuilder.random.nextLong(Long.MAX_VALUE);
         Post post = new Post();
 
-        post.setId(randomValue);
+        post.setId(id);
         post.setTitle("Title" + randomValue);
         post.setContent("Content" + randomValue);
-        post.setUser(null);
+        post.setUser(user);
+        post.setStatus(Status.PENDING_APPROVAL);
         post.setCreatedAt(new Date());
         post.setUpdatedAt(new Date());
         return post;
     }
 
     protected Like getLikeEntity() {
+        return getLikeEntity( getUserEntity(), getPostEntity() );
+    }
+
+    protected Like getLikeEntity(User user, Post post) {
         Long randomValue = EntityBuilder.random.nextLong(Long.MAX_VALUE);
         Like like = new Like();
 
         like.setId(randomValue);
-        like.setUser(getUserEntity());
-        like.setPost(getPostEntity());
+        like.setUser(user);
+        like.setPost(post);
         return like;
     }
 

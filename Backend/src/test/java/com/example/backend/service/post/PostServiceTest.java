@@ -93,10 +93,9 @@ public class PostServiceTest extends EntityBuilder {
         var user = getUserEntity();
         var post = getPostEntity();
         post.setUser(user);
+        post.setStatus(Status.APPROVED);
         when( userRepository.findById(user.getId()) ).thenReturn( java.util.Optional.of(user) );
         when( postRepository.save(post) ).thenAnswer( invocation -> invocation.getArgument(0) );
-
-        assertNotEquals( Status.PENDING_APPROVAL, post.getStatus() );
 
         // test
         var result = postService.createPost(post);
