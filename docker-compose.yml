@@ -17,7 +17,7 @@ services:
   backend:
     build: .
     container_name: ${CONTAINER_NAME-renaissance}-container
-    restart: always
+    restart: on-failure
     depends_on:
       - mysql
     ports:
