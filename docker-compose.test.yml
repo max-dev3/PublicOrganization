@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+
+  mysql:
+    container_name: ${CONTAINER_NAME-mysql}-test-container
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_TEST_DATABASE-public_organization_for_stress_test}
+    volumes:
+      - mysql-test-volume:/var/lib/mysql
+
+  backend:
+    container_name: ${CONTAINER_NAME-renaissance}-test-container
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/${MYSQL_TEST_DATABASE-public_organization_for_stress_test}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=${MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
+  
+volumes:
+  mysql-test-volume: {}
