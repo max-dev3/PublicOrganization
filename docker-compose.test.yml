@@ -31,7 +31,9 @@ services:
 
   k6:
     container_name: ${CONTAINER_NAME-k6}-test-container
-    image: grafana/k6
+    build:
+      context: .
+      dockerfile: ./scripts-for-tests/dockerfile.k6
     depends_on:
       - backend
       - mysql
@@ -40,9 +42,8 @@ services:
       - BACKEND_PORT=8080
       - USERNAME=${AUTH_USERNAME}
       - PASSWORD=${AUTH_PASSWORD}
-    volumes:
-      - ./scripts-for-tests:/scripts
-    command: run /scripts/load-test.js
-  
+    # volumes: # Uncomment this line if you want to use local scripts without rebuilding the image
+    #   - ./scripts-for-tests:/scripts
+    
 volumes:
   mysql-test-volume: {}
