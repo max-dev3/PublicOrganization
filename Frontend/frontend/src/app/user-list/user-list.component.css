@@ -1,0 +1,50 @@
+.table-container {
+  display: flex;
+  flex-direction: column; /* New line: make the children (h1 and table) stack vertically */
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  width: 100%;
+  overflow-x: auto; /* makes table scrollable horizontally when screen is too small */
+}
+
+h1 {
+  text-align: center; /* make the text inside h1 centered */
+}
+
+table {
+  width: 100%;
+  max-width: 800px; /* adjust as needed */
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.action-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.action-button:hover {
+  background-color: #0056b3;
+}
+.action-button {
+  width: 100%; /* Займає 100% ширини контейнера */
+  padding: 5px 10px;
+  margin-right: 0;
+  border: none;
+  color: #fff;
+  background-color: #007BFF;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}

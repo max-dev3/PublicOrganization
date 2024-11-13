@@ -1,0 +1,26 @@
+<div class="table-container">
+  <h1>Таблиця користувачів</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <div class="action-buttons-container">
+          <button class="action-button" (click)="changeUserRole(user.id, 'USER')">Надати User</button>
+          <button class="action-button" (click)="changeUserRole(user.id, 'MODERATOR')">Надати Moderator</button>
+          <button class="action-button" (click)="changeUserRole(user.id, 'ADMIN')">Надати Admin</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
