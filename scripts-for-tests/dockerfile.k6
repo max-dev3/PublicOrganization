@@ -1,0 +1,7 @@
+FROM alpine:3.20 as builder
+FROM grafana/k6
+
+COPY ./scripts-for-tests/*.js /scripts/
+COPY --from=builder /usr/bin/tail /usr/bin/tail
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
