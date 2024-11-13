@@ -8,7 +8,7 @@
     <!-- Username Field -->
     <div class="form-group">
       <label for="username">Ім'я користувача<span class="required-star">*</span></label>
-      <input type="text" id="username" formControlName="username" class="form-control" autocomplete="username"
+      <input type="text" id="username" formControlName="username" class="form-control userform" autocomplete="username"
              [ngClass]="{ 'is-invalid': f['username'].errors && (f['username'].touched || submitted) }"/>
       <div *ngIf="f['username'].errors && (f['username'].touched || submitted)" class="invalid-feedback">
         <div *ngIf="f['username'].errors?.['required']">Ім'я користувача обов'язкове</div>

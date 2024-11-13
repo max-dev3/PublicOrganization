@@ -1,0 +1,57 @@
+<div class="faq-container">
+<mat-accordion class="faq-according">
+
+  <ng-container *ngFor="let faq of faqs">
+    <form *ngIf="editFAQId === faq.id" #faqForm="ngForm" (ngSubmit)="updateFAQ(faqForm, faq)" class="edit-faq-container">
+      <div>
+        <label for="question">Питання</label>
+        <input id="question" name="question" [(ngModel)]="faq.question" required>
+      </div>
+      <div>
+        <label for="answer">Відповідь</label>
+        <textarea id="answer" name="answer" [(ngModel)]="faq.answer" required></textarea>
+      </div>
+      <div class="edit-buttons">
+        <button mat-button type="submit" color="primary">Update</button>
+        <button mat-button type="button" color="warn" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+
+    <mat-expansion-panel *ngIf="editFAQId !== faq.id">
+      <mat-expansion-panel-header class="back">
+        <mat-panel-title class="title-cls" >
+          {{ faq.question }}
+        </mat-panel-title>
+        <mat-panel-description>
+          <button mat-icon-button color="primary" *ngIf="isAdminOrModerator()" (click)="editFAQ(faq); $event.stopPropagation()"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn" *ngIf="isAdminOrModerator()" (click)="deleteFAQ(faq); $event.stopPropagation()"><mat-icon>delete</mat-icon></button>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      {{ faq.answer }}
+    </mat-expansion-panel>
+  </ng-container>
+</mat-accordion>
+<div class="faq-form" *ngIf="showAddFAQForm">
+  <h2>Create FAQ</h2>
+  <form #faqForm="ngForm" (ngSubmit)="addFAQ(faqForm)" class="edit-faq-container">
+    <div class="form-group">
+      <label for="question1">Question</label>
+      <input type="text" id="question1" name="question" [(ngModel)]="newFAQ.question" required>
+    </div>
+    <div class="form-group">
+      <label for="answer1">Answer</label>
+      <textarea id="answer1" name="answer" [(ngModel)]="newFAQ.answer" required></textarea>
+    </div>
+    <div class="edit-buttons">
+      <button mat-button type="submit" color="primary">Create</button>
+      <button mat-button type="button" color="warn" (click)="cancelAddFAQ()">Cancel</button>
+    </div>
+
+  </form>
+</div>
+
+
+<button mat-fab color="primary" *ngIf="isAdminOrModerator()" class="add-faq-button" (click)="showAddFAQForm = !showAddFAQForm ">
+  <mat-icon>add</mat-icon>
+</button>
+</div>
